@@ -16,7 +16,7 @@ The Student Registration & Feedback Web Application is a fully functional, inter
 
 The website uses a tabbed navigation system that allows users to switch between different sections without page reloads, demonstrating modern web application design practices.
 
----
+
 
 ##  How the Website Works
 
