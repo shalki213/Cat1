@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration & Feedback System - SIT 322</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1>🎓 Student Registration & Feedback System</h1>
+            <p>SIT 322 - Web Application Development</p>
+        </div>
+    </header>
+
+    <!-- Tab Navigation -->
+    <nav class="tab-navigation">
+        <div class="container">
+            <button class="tab-btn active" data-tab="register">
+                📝 Register
+            </button>
+            <button class="tab-btn" data-tab="feedback">
+                💬 Feedback
+            </button>
+            <button class="tab-btn" data-tab="records">
+                📊 View Records
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="container">
+        <!-- Success/Error Message Box -->
+        <div id="messageBox" class="message-box hidden"></div>
+
+        <!-- Tab 1: Registration Form -->
+        <section id="register" class="tab-content active">
+            <div class="form-card">
+                <h2>Student Registration</h2>
+                <p class="form-description">Please fill in all required fields to register for the course.</p>
+                
+                <form id="registrationForm">
+                    <fieldset>
+                        <legend>Personal Information</legend>
+                        
+                        <div class="form-group">
+                            <label for="studentName">Full Name <span class="required">*</span></label>
+                            <input 
+                                type="text" 
+                                id="studentName" 
+                                name="studentName" 
+                                placeholder="Enter your full name"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="studentId">Student ID <span class="required">*</span></label>
+                            <input 
+                                type="text" 
+                                id="studentId" 
+                                name="studentId" 
+                                placeholder="e.g., 12345678"
+                                pattern="[0-9]{8}"
+                                title="Student ID must be 8 digits"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                placeholder="student@deakin.edu.au"
+                                required>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Course Details</legend>
+                        
+                        <div class="form-group">
+                            <label for="course">Select Course <span class="required">*</span></label>
+                            <select id="course" name="course" required>
+                                <option value="">-- Choose a course --</option>
+                                <option value="COMPUTER SCIENCE">COMPUTER SCIENCE</option>
+                                <option value="INFORMATION TECHNOLOGY">INFORMATION TECHNOLOGY</option>
+                                <option value="STATISTICS">STATISTICS</option>
+                                <option value="LAW">LAW</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="semester">Semester <span class="required">*</span></label>
+                            <select id="semester" name="semester" required>
+                                <option value="">-- Select semester --</option>
+                                <option value="S1 2026">Semester 1, 2026</option>
+                                <option value="S2 2026">Semester 2, 2026</option>
+                                <option value="S3 2026">Semester 3, 2026</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="studyMode">Study Mode <span class="required">*</span></label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="studyMode" value="Full-time" required>
+                                    Full-time
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="studyMode" value="Part-time">
+                                    Part-time
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Submit Registration</button>
+                        <button type="reset" class="btn btn-secondary">Clear Form</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Tab 2: Feedback Form -->
+        <section id="feedback" class="tab-content">
+            <div class="form-card">
+                <h2>Course Feedback</h2>
+                <p class="form-description">Your feedback helps us improve the course quality.</p>
+                
+                <form id="feedbackForm">
+                    <fieldset>
+                        <legend>Feedback Details</legend>
+                        
+                        <div class="form-group">
+                            <label for="feedbackName">Your Name <span class="required">*</span></label>
+                            <input 
+                                type="text" 
+                                id="feedbackName" 
+                                name="feedbackName" 
+                                placeholder="Enter your name"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="feedbackCourse">Course <span class="required">*</span></label>
+                            <select id="feedbackCourse" name="feedbackCourse" required>
+                                <option value="">-- Select course --</option>
+                                <option value="COMPUTER SCIENCE">COMPUTER SCIENCE</option>
+                                <option value="INFORMATION TECHNOLOGY">INFORMATION TECHNOLOGY</option>
+                                <option value="STATISTICS">STATISTICS</option>
+                                <option value="LAW">LAW</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rating">Overall Rating <span class="required">*</span></label>
+                            <select id="rating" name="rating" required>
+                                <option value="">-- Rate the course --</option>
+                                <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+                                <option value="4">⭐⭐⭐⭐ Very Good</option>
+                                <option value="3">⭐⭐⭐ Good</option>
+                                <option value="2">⭐⭐ Fair</option>
+                                <option value="1">⭐ Poor</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="comments">Comments <span class="required">*</span></label>
+                            <textarea 
+                                id="comments" 
+                                name="comments" 
+                                rows="5" 
+                                placeholder="Share your thoughts about the course..."
+                                required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="anonymous" id="anonymous">
+                                Submit feedback anonymously
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Submit Feedback</button>
+                        <button type="reset" class="btn btn-secondary">Clear Form</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Tab 3: Records Table -->
+        <section id="records" class="tab-content">
+            <div class="records-card">
+                <h2>Registration Records</h2>
+                <p class="form-description">View all submitted student registrations below.</p>
+                
+                <div class="table-container">
+                    <table id="recordsTable">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Student Name</th>
+                                <th>Student ID</th>
+                                <th>Email</th>
+                                <th>Course</th>
+                                <th>Semester</th>
+                                <th>Study Mode</th>
+                                <th>Registration Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recordsTableBody">
+                            <tr>
+                                <td colspan="8" class="no-records">No registrations yet. Submit the registration form to see records here.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 SIT 322 - Web Application Development | Deakin University</p>
+            <p>Demonstrating: HTML Forms, CSS Styling, JavaScript Validation & DOM Manipulation</p>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>
